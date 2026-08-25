@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ഈദേ റബീഅ് - MEELAD FEST 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700;800&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#241a10;
+    --maroon:#7a1f1f;
+    --maroon-dark:#5c1717;
+    --gold:#d9a441;
+    --gold-soft:#f2cf82;
+    --teal:#0e7c6b;
+    --teal-dark:#0a5a4d;
+    --cream:#fbf3e3;
+    --paper:#fffdf8;
+    --jahoon:#c23b6c;
+    --saihoon:#8a3b8f;
+    --saithoon:#e0b25a;
+    --line:#e7d9bd;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Noto Sans Malayalam','Baloo 2',sans-serif;
+    background:
+      radial-gradient(circle at 20% 0%, #1a5c52 0%, transparent 45%),
+      radial-gradient(circle at 100% 0%, #123b34 0%, transparent 55%),
+      linear-gradient(180deg,#0d3b34 0%, #f4ead2 22%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .wrap{
+    max-width:480px;
+    margin:0 auto;
+    min-height:100vh;
+    background:var(--cream);
+    box-shadow:0 0 40px rgba(0,0,0,.35);
+    padding-bottom:40px;
+    position:relative;
+  }
+  header.top{
+    background:linear-gradient(135deg,#0e5b4f,#123b34 60%);
+    padding:16px 16px 30px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header.top::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:-1px;
+    height:14px;
+    background-image: repeating-linear-gradient(45deg, var(--gold) 0 6px, transparent 6px 12px);
+    opacity:.5;
+  }
+  .admin-toggle-row{
+    display:flex;justify-content:flex-end;margin-bottom:2px;
+  }
+  .admin-btn{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(242,207,130,.5);
+    color:var(--gold-soft);
+    font-family:inherit;font-size:11px;font-weight:700;
+    padding:5px 12px;border-radius:999px;cursor:pointer;
+    letter-spacing:.05em;
+  }
+  .admin-btn.on{background:var(--gold);color:#3a2703;border-color:var(--gold);}
+  .eyebrow{
+    color:var(--gold-soft);
+    letter-spacing:.35em;
+    font-size:11px;
+    font-weight:700;
+    font-family:'Baloo 2',sans-serif;
+  }
+  .title-ml{
+    color:#f4e3c3;
+    font-size:38px;
+    font-weight:800;
+    margin:6px 0 2px;
+    text-shadow:0 2px 10px rgba(0,0,0,.4);
+  }
+  .title-sub{
+    color:var(--gold-soft);
+    font-family:'Baloo 2',sans-serif;
+    letter-spacing:.28em;
+    font-size:13px;
+    font-weight:700;
+  }
+
+  .search-zone{padding:18px 18px 4px;}
+  .search-box{
+    position:relative;
+  }
+  .search-box input{
+    width:100%;
+    padding:14px 46px 14px 18px;
+    border-radius:999px;
+    border:none;
+    background:var(--teal);
+    color:#fff;
+    font-size:15px;
+    font-family:inherit;
+    font-weight:600;
+    outline:none;
+  }
+  .search-box input::placeholder{color:#cdeee7;}
+  .search-box .icon{
+    position:absolute;right:16px;top:50%;transform:translateY(-50%);
+    color:#cdeee7;font-size:16px;
+  }
+  .search-results{
+    margin-top:10px;
+    background:var(--paper);
+    border-radius:16px;
+    border:1px solid var(--line);
+    padding:4px 0;
+    overflow:hidden;
+  }
+  .search-results .sr-head{
+    padding:10px 16px;
+    font-weight:700;
+    font-size:13px;
+    color:var(--teal-dark);
+    border-bottom:1px solid var(--line);
+  }
+  .sr-identity{
+    padding:12px 16px;
+    background:#f6ecd2;
+    border-bottom:1px solid var(--line);
+  }
+  .sr-identity .nm{font-weight:800;font-size:15px;color:var(--ink);}
+  .sr-identity .meta{font-size:12px;color:#6b5a38;margin-top:2px;}
+  .sr-identity .team-pill{
+    display:inline-block;margin-top:6px;padding:3px 10px;border-radius:999px;
+    font-size:11.5px;font-weight:700;color:#fff;
+  }
+  .sr-item{
+    padding:10px 16px;
+    border-bottom:1px dashed var(--line);
+    font-size:13.5px;
+  }
+  .sr-item:last-child{border-bottom:none;}
+  .sr-item .path{color:#7a6a4a;font-size:11.5px;margin-bottom:2px;}
+  .sr-item .name{font-weight:700;color:var(--ink);}
+  .sr-item .pos{
+    display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;
+    font-size:11px;font-weight:700;color:#fff;
+  }
+  .pos-1{background:#c9982f;}
+  .pos-2{background:#8d8d8d;}
+  .pos-3{background:#a2622f;}
+  .sr-empty{padding:14px 16px;font-size:13px;color:#8a7a58;}
+
+  .teams{padding:16px 18px 6px;display:flex;flex-direction:column;gap:12px;}
+  .team-bar{
+    display:flex;align-items:stretch;border-radius:999px;overflow:hidden;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+  }
+  .team-bar .label{
+    flex:1;
+    display:flex;align-items:center;padding:0 20px;
+    font-weight:800;font-size:19px;color:#fff;
+    text-shadow:0 1px 3px rgba(0,0,0,.25);
+  }
+  .team-bar .score{
+    width:70px;
+    background:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:20px;color:var(--ink);
+  }
+  .team-jahoon .label{background:linear-gradient(90deg,var(--jahoon),#e06a94);}
+  .team-saihoon .label{background:linear-gradient(90deg,var(--saihoon),#b061b5);}
+  .team-saithoon .label{background:linear-gradient(90deg,#e0b25a,#f0cf8c);}
+  .team-saithoon .label{color:#5c3f0d;text-shadow:none;}
+
+  .admin-panel{
+    margin:6px 18px 0;background:var(--paper);border:1px solid var(--gold);
+    border-radius:14px;padding:12px 14px;
+  }
+  .admin-panel .ap-title{font-size:12.5px;font-weight:800;color:var(--maroon);margin-bottom:8px;letter-spacing:.03em;}
+  .adj-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .adj-row:last-child{margin-bottom:0;}
+  .adj-row .swatch{width:10px;height:10px;border-radius:50%;flex:none;}
+  .adj-row .nm{flex:1;font-size:13px;font-weight:700;}
+  .adj-row input{width:64px;padding:6px 8px;border-radius:8px;border:1px solid var(--line);font-family:inherit;font-size:13px;}
+  .adj-row .computed{font-size:11px;color:#8a7a58;}
+
+  .cat-buttons{
+    display:flex;gap:12px;padding:18px 18px 6px;
+  }
+  .cat-btn{
+    flex:1;
+    background:linear-gradient(160deg,var(--maroon),var(--maroon-dark));
+    color:#fff;border:none;border-radius:14px;
+    padding:18px 8px;font-weight:800;font-size:14.5px;
+    font-family:inherit;letter-spacing:.02em;
+    box-shadow:0 4px 10px rgba(0,0,0,.18);
+    cursor:pointer;
+    line-height:1.25;
+  }
+  .cat-btn:active{transform:translateY(1px);}
+  .cat-btn.active{background:linear-gradient(160deg,var(--gold),#b9832a);color:#3a2703;}
+
+  .crumbs{
+    display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+    padding:14px 18px 0;
+    font-size:12.5px;color:var(--teal-dark);font-weight:700;
+  }
+  .crumbs span.sep{color:#b7a97f;}
+  .crumbs button{
+    background:none;border:none;color:var(--teal-dark);font-weight:700;
+    font-family:inherit;font-size:12.5px;cursor:pointer;padding:2px 4px;
+    text-decoration:underline;
+  }
+  .crumbs .current{color:var(--maroon);}
+
+  .panel{margin:14px 18px 0;}
+  .chip-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .chip{
+    background:var(--paper);border:2px solid var(--teal);color:var(--teal-dark);
+    border-radius:12px;padding:14px 10px;font-weight:700;font-size:14px;
+    flex:1 1 120px;text-align:center;cursor:pointer;font-family:inherit;
+  }
+  .chip:active{transform:translateY(1px);}
+  .chip.selected{background:var(--teal);color:#fff;}
+
+  .agegroup-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .agegroup-grid .chip{flex:none;}
+
+  .prog-list{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+  .prog-item{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;display:flex;justify-content:space-between;align-items:center;
+    cursor:pointer;
+  }
+  .prog-item .pname{font-weight:700;font-size:14px;color:var(--ink);}
+  .prog-item .pstatus{font-size:11.5px;color:#8a7a58;margin-top:2px;}
+  .prog-item .arrow{color:var(--gold);font-size:18px;}
+
+  .add-row{
+    display:flex;gap:8px;margin-top:10px;
+  }
+  .add-row input{
+    flex:1;padding:10px 12px;border-radius:10px;border:1px solid var(--line);
+    font-family:inherit;font-size:13.5px;
+  }
+  .add-row button, .primary-btn{
+    background:var(--teal);color:#fff;border:none;border-radius:10px;
+    padding:10px 16px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;
+  }
+
+  .placement-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:14px;margin-bottom:10px;
+  }
+  .placement-card h4{
+    margin:0 0 10px;font-size:14px;color:var(--maroon);
+    display:flex;align-items:center;gap:8px;
+  }
+  .rank-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:24px;height:24px;border-radius:50%;color:#fff;font-size:12px;font-weight:800;
+  }
+  .field-row{display:flex;gap:8px;margin-bottom:8px;}
+  .field-row input, .field-row select{
+    flex:1;padding:10px 10px;border-radius:10px;border:1px solid var(--line);
+    font-family:inherit;font-size:13.5px;background:#fff;
+  }
+  .field-row .pts{max-width:70px;flex:none;}
+  .readonly-line{font-size:13.5px;color:var(--ink);}
+  .readonly-empty{font-size:13px;color:#8a7a58;font-style:normal;}
+
+  .empty-note{
+    text-align:center;color:#8a7a58;font-size:13px;padding:22px 10px;
+    background:var(--paper);border:1px dashed var(--line);border-radius:14px;
+  }
+
+  .foot-band{
+    margin-top:22px;height:16px;
+    background-image: linear-gradient(45deg, var(--teal) 25%, transparent 25%), linear-gradient(-45deg, var(--teal) 25%, transparent 25%);
+    background-size:16px 16px;
+    opacity:.55;
+  }
+  .save-toast{
+    position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
+    background:var(--ink);color:#fff;padding:8px 16px;border-radius:999px;
+    font-size:12.5px;opacity:0;pointer-events:none;transition:opacity .25s;
+    z-index:50;
+  }
+  .save-toast.show{opacity:.92;}
+  .loading{padding:40px;text-align:center;color:#8a7a58;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="save-toast" id="toast">സേവ് ചെയ്തു</div>
+
+<script>
+/* ---------------- Config ---------------- */
+const STORAGE_KEY = 'meelad-fest-2026-data';
+const ADMIN_PASSCODE = 'meelad2026';
+
+const AGE_GROUPS = [
+  {id:'kiddies', label:'KIDDIES'},
+  {id:'subjunior', label:'SUB JUNIOR'},
+  {id:'junior', label:'JUNIOR'},
+  {id:'senior', label:'SENIOR'},
+  {id:'supersenior', label:'SUPER SENIOR'}
+];
+
+const CATEGORIES = [
+  {id:'stage',    label:'STAGE',     shape:'gender-age'},
+  {id:'nonstage', label:'NON STAGE', shape:'gender-age'},
+  {id:'general',  label:'GENERAL',   shape:'gender-only'}
+];
+
+const TEAMS = [
+  {id:'jahoon', label:'ജൈഹൂൻ', cls:'team-jahoon', hex:'#c23b6c'},
+  {id:'saihoon', label:'സൈഹൂൻ', cls:'team-saihoon', hex:'#8a3b8f'},
+  {id:'saithoon', label:'സൈതൂൻ', cls:'team-saithoon', hex:'#c99a35'}
+];
+
+const POINTS = {first:5, second:3, third:1};
+
+/* ---------------- Program lists (given by organiser) ---------------- */
+const DEFAULT_PROGRAMS = {
+  stage: {
+    boys: {
+      kiddies: ['STORY TELLING','SINGLE SONG','GROUP SONG'],
+      subjunior: ['MADH SONG','SPEECH MALAYALAM','STORY TELLING','GROUP SONG'],
+      junior: ['SPEECH MALAYALAM','ARABIC SONG','ISLAMIC SONG','URDU SONG','GROUP SONG'],
+      senior: ['SPEECH MALAYALAM','SPEECH ENGLISH','SPEECH URDU','ARABIC SONG','ISLAMIC SONG','MAPPILA SONG','GROUP SONG'],
+      supersenior: ['SPEECH MALAYALAM','SPEECH ENGLISH','SPEECH ARABIC','ARABIC SONG','MADH SONG','MAPPILA SONG','GROUP SONG','PADI PARAYAL']
+    },
+    girls: {
+      kiddies: ['STORY TELLING','SINGLE SONG','GROUP SONG'],
+      subjunior: ['MADH SONG','SPEECH MALAYALAM','GROUP SONG'],
+      junior: ['SPEECH MALAYALAM','ARABIC SONG','MADH SONG','GROUP SONG'],
+      senior: ['SPEECH MALAYALAM','SPEECH ENGLISH','ARABIC SONG','MADH SONG','MALA RECITATION','GROUP SONG'],
+      supersenior: ['SPEECH MALAYALAM','SPEECH ENGLISH','ARABIC SONG','MADH SONG','PADAPPATT','MALA RECITATION']
+    }
+  },
+  nonstage: {
+    boys: {
+      kiddies: ['FATHIHA RECITATION','WORD FORMATION','COLOURING','MEMORY TEST','PICTURE READING CLASS -1','PICTURE READING CLASS -2','LETTER TEST CLASS -1'],
+      subjunior: ["QUR'AN RECITATION",'HIFZ','MEMORY TEST','HAND WRITING ARA-MALA','PENCIL DRAWING'],
+      junior: ["QUR'AN RECITATION",'HIFZ','ADHAAN','HAND WRITING ARABIC','WATER COLOURING','KURUNNUKAL TEST'],
+      senior: ["QUR'AN RECITATION",'ADHAAN','CALLIGRAPHY ARABIC','QUIZ','STORY MAKING','KURUNNUKAL TEST'],
+      supersenior: ["QUR'AN RECITATION",'CALLIGRAPHY ARABIC','QUIZ','ESSAY MALAYALAM','NANO LITERATURE','POSTER MAKING']
+    },
+    girls: {
+      kiddies: ['FATHIHA RECITATION','WORD FORMATION','COLOURING','MEMORY TEST','PICTURE READING CLASS -1','PICTURE READING CLASS -2','LETTER TEST CLASS -1'],
+      subjunior: ["QUR'AN RECITATION",'HIFZ','MEMORY TEST','HAND WRITING ARA-MALA','PENCIL DRAWING'],
+      junior: ["QUR'AN RECITATION",'HIFZ','ADHAAN','HAND WRITING ARABIC','WATER COLOURING','KURUNNUKAL TEST'],
+      senior: ["QUR'AN RECITATION",'ADHAAN','CALLIGRAPHY ARABIC','QUIZ','STORY MAKING','KURUNNUKAL TEST'],
+      supersenior: ["QUR'AN RECITATION",'CALLIGRAPHY ARABIC','QUIZ','ESSAY MALAYALAM','NANO LITERATURE','POSTER MAKING']
+    }
+  },
+  general: {
+    boys: ['VIDEO MAKING (NON STAGE)','MOULID RECITATION','MASHUP'],
+    girls: ['VIDEO MAKING (NON STAGE)','MOULID RECITATION','MASHUP','BURDHA']
+  }
+};
+
+/* ---------------- Master participant roster ---------------- */
+/* [chestNo, "Name"] tuples, grouped by team -> gender -> age group */
+const ROSTER_RAW = {
+  saithoon: {
+    girls: {
+      kiddies: [[151,"Raula shareef PK"],[152,"Ayisha Hadiya AM"],[153,"Ayisha Haya Faisal M"],[154,"Fathima Mirha Mehak"]],
+      subjunior: [[155,"Haiza binth Shaijal"],[156,"Ayisha Shenza P"],[157,"Ayisha Haiza AM"],[158,"Fathima zenha Mehwish"],[159,"Shenza fathima K"]],
+      junior: [[160,"Fathima Samha P"],[161,"Naifa zainab P"],[162,"Lubna Ali PM"],[163,"Fathima siyana VR"],[164,"Nasla Zainab TK"],[165,"Rasha Fathima K"],[166,"Manha Fathima C"]],
+      senior: [[167,"Nora Mehsha"],[168,"Fathiha PK"],[169,"Fathima Liya SR"],[170,"Fathima TK"]],
+      supersenior: [[171,"ISHA MEHRIN C"],[172,"Suhaila KK"],[173,"Haifa Maryam"],[174,"Ayisha Zanha TK"],[175,"Ziya Fathima K"],[176,"Fathima Aslaha"],[177,"Fathima Zahra K"],[178,"NIDA TP"],[179,"Minha Fathima M"],[180,"Sana Fathima T"],[181,"Fathima swaliha CM"],[182,"Minha fathima pm"],[183,"Haifa Maryam"],[184,"Ayisha Zanha TK"]]
+    },
+    boys: {
+      kiddies: [[101,"Muhammed mt"],[102,"Muhammad Haizan m"],[103,"Shaban t"],[104,"Muhammad Hanan"],[105,"Iwan Ibak t"],[106,"Fezin Hanik pk"]],
+      subjunior: [[107,"Shamis Nahan P"],[108,"muhammed Yaseen VR"],[109,"Muhammed Salman T"],[110,"Muhammed Misbah PC"],[111,"Marwan P"],[112,"Nasal Faizan C"],[113,"Muhammed Zayan VR"]],
+      junior: [[114,"Muhammed Ck"],[115,"Muhammed Yaseen m"],[116,"Muhammed Ibrahim MP"],[117,"Muhammed Rajih P"],[118,"midlaj MP"],[119,"Shihas Vk"],[120,"Muhammed Hanan C"],[121,"Muhammed Diyan"],[122,"muhammed afvah p"]],
+      senior: [[123,"muhammed Yaseen k"],[124,"muhammed Siyaf VR"],[125,"Muhammed Shefin k"],[126,"Muhammed Hadi kk"],[127,"muhammad Shahabas T"],[128,"Afnan VPM"]],
+      supersenior: [[129,"muhammed A seem pm"],[130,"muhammed Jasar VR"],[131,"muhammed Hinaan ck"],[132,"muhammed Anfas Ptk"],[133,"muhammed shammas Vk"],[134,"Muhammed Rabeeh M"],[135,"Muhammed Zamin TC"],[136,"muhammed Rishal k"],[137,"muhammed Rifayath"],[138,"muhammed Ajnas kk"]]
+    }
+  },
+  saihoon: {
+    girls: {
+      kiddies: [[251,"Fathima Hanza NM"],[252,"Rifa Ayisha O"],[253,"Haifa Ayisha M"],[254,"Thanha Maryam"]],
+      subjunior: [[255,"Ajwa Fathima M"],[256,"Fathima Zahra"],[257,"Ayisha Faiza VPM"],[258,"Samrin Ayana R"],[259,"Filsa Fathima MT"]],
+      junior: [[260,"Ajwa Mariyam KN"],[261,"Laiha Subin"],[262,"Fathima R"],[263,"Fathima Zahra AM"],[264,"Misna Ayisha M"],[265,"Hamda KN"]],
+      senior: [[266,"Rida Riyas T"],[267,"Jaza Fathima PM"],[268,"Riya Fathima M"],[269,"Isha Fathima P"]],
+      supersenior: [[270,"Shada Maryam Pm"],[271,"Fathima Rushda M"],[272,"Fathima Nasrin MP"],[273,"Shahama R"],[274,"Hadiya Km"],[275,"Riya Misna K"],[276,"Ayisha Fakiha TP"],[277,"Fathima safa"],[278,"Riya Mehrin ck"],[279,"Niya fathima"],[280,"Riya Latheef KK"],[281,"Minha Fathima KN"],[282,"Lamiya Aleema"]]
+    },
+    boys: {
+      kiddies: [[201,"Abdul Aadi M"],[202,"Aman Radi M"],[203,"Muhammad Izan Shereef vr"],[204,"Muhammed Rayyan pm"],[205,"Aizin Bin Shamseer mp"],[206,"Midlaj"]],
+      subjunior: [[207,"Muhammed Izan T"],[208,"Hathib Abdulla"],[209,"Muhammed Ramin M"],[210,"Muhammed Radih PV"],[211,"Muhammad Jaha Nafrin M"],[212,"Muhammed Yemin fas M"],[213,"Zayan M"]],
+      junior: [[214,"Raswin"],[215,"Shayan"],[216,"Muhammad PM"],[217,"Rayyan"],[218,"Ashwin Shan"],[219,"Rifi"],[220,"Mubashir"],[221,"Muhammad KN"],[222,"Naseeh"],[223,"Thameem"]],
+      senior: [[224,"Muhammed Ansil m"],[225,"Siyan Abdullah VR"],[226,"Alshan Abdullah PC"],[227,"Muhammed Rayan Ek"],[228,"Muhammed Zayan Pk"],[229,"muhammed Adyab M"],[230,"muhammed kk"]],
+      supersenior: [[231,"Muhammed Rabeeh M"],[232,"Muhammed Hisham kn"],[233,"Muhammed Shaheen Am"],[234,"Muhammed NM"],[235,"Muhammed Razi Pm"],[236,"Muhammed Hamdan M"],[237,"Muhammed Habeeb M"],[238,"Muhammed Mishaal HJ"],[239,"Muhammed Zayan kk"]]
+    }
+  },
+  jahoon: {
+    girls: {
+      kiddies: [[351,"Hawwa Maryam V R"],[352,"Nuha Mariya"],[353,"Fathima Wafa P"],[354,"Shifa Fathima K"]],
+      subjunior: [[355,"Ayisha Thwaiba PM"],[356,"Ayisha Aleesha M"],[357,"Fathima Mehrin"],[358,"Samha Sherin PM"],[359,"Ayisha Laiba"]],
+      junior: [[360,"Rana Fathima O"],[361,"Zanha Menhrin"],[362,"Hamda Fathima AM"],[363,"Suha Fathima"],[364,"Hadiya Fathima AK"],[365,"Dareera Sidra P"]],
+      senior: [[366,"Minha fathima TK"],[367,"Amina Hamda P"],[368,"Misba Fathima MK"],[369,"Fathima Noora KC"]],
+      supersenior: [[370,"Aslaha CM"],[371,"Hanna Fathima C"],[372,"Thwaiba Fathima VPM"],[373,"Hamna Hafsa TC"],[374,"Naja Nourin K"],[375,"Haifa Ayisha N"],[376,"Minha Fathima MK"],[377,"Fida M"],[378,"Safa Fathima PM"],[379,"Nafla Fathima TK"],[380,"Rifa fathima"],[381,"Nashws fathima p"],[382,"Rifa fathima pkm"],[383,"Rifa fathima"]]
+    },
+    boys: {
+      kiddies: [[301,"Muhammad Faizan"],[302,"Azim Ajmal P"],[303,"Muhammad Ramis M"],[304,"Aman Zaihan O"],[305,"Adam Aidin VR"],[306,"Muhammad M"],[307,"Asim Sha mp"]],
+      subjunior: [[308,"Yahan"],[309,"Aboobacker"],[310,"Fadi Febin"],[311,"Muhammad M"],[312,"Muhammad Fadi"],[313,"Mirsan"],[314,"Ajfan"]],
+      junior: [[315,"Muhammad P"],[316,"Muhammad Insamam MP"],[317,"muhammad Hamdan C"],[318,"Muhammed Azhar M"],[319,"Abdullah Sajjad TK"],[320,"Muhammad Muhthad Mk"],[321,"Muhammad Hayan VPM"],[322,"Haizam shamseer MP"],[323,"Ameen k"]],
+      senior: [[324,"Muhammad Rishan M"],[325,"Adhil k"],[326,"Muhammed Haroon M"],[327,"Muhammed Shazil"],[328,"Hamdan muhammed PM"],[329,"Muhamad Najeeh k"],[330,"Muhamad Alhadi RM"]],
+      supersenior: [[331,"Muhammed AM"],[332,"Muhammed Rizwan"],[334,"Noor Milan kn"],[335,"Farhan vp"],[336,"Hissa muhammad"],[337,"Muhammad jasil AM"],[338,"Muhammed Shammas"],[339,"Muhammad Safwan V"],[340,"Muhammed Hishan O"]]
+    }
+  }
+};
+
+function buildRoster(){
+  const roster = {};
+  for(const teamId in ROSTER_RAW){
+    for(const gender of ['girls','boys']){
+      for(const ag of AGE_GROUPS){
+        const entries = (ROSTER_RAW[teamId][gender] && ROSTER_RAW[teamId][gender][ag.id]) || [];
+        entries.forEach(([chestNo, name])=>{
+          roster[String(chestNo)] = {name, team:teamId, gender, ageGroup:ag.id};
+        });
+      }
+    }
+  }
+  return roster;
+}
+
+function makeProgList(names){
+  return (names||[]).map(name => ({name, results:{first:null, second:null, third:null}}));
+}
+
+function freshData(){
+  const cats = {};
+  cats.stage = {boys:{}, girls:{}};
+  for(const g of ['boys','girls']){
+    for(const ag of AGE_GROUPS){
+      cats.stage[g][ag.id] = makeProgList(DEFAULT_PROGRAMS.stage[g][ag.id]);
+    }
+  }
+  cats.nonstage = {boys:{}, girls:{}};
+  for(const g of ['boys','girls']){
+    for(const ag of AGE_GROUPS){
+      cats.nonstage[g][ag.id] = makeProgList(DEFAULT_PROGRAMS.nonstage[g][ag.id]);
+    }
+  }
+  cats.general = {
+    boys: makeProgList(DEFAULT_PROGRAMS.general.boys),
+    girls: makeProgList(DEFAULT_PROGRAMS.general.girls)
+  };
+  return {
+    categories:cats,
+    roster: buildRoster(),
+    teamAdjustments: {jahoon:0, saihoon:0, saithoon:0}
+  };
+}
+
+let DATA = null;
+let nav = {cat:null, gender:null, age:null, progIdx:null};
+let searchQuery = '';
+let saveTimer = null;
+let isAdmin = false;
+
+function catShape(catId){ return CATEGORIES.find(c=>c.id===catId).shape; }
+
+function getProgList(){
+  if(!nav.cat) return null;
+  const shape = catShape(nav.cat);
+  if(shape==='gender-age'){
+    if(!nav.gender || !nav.age) return null;
+    return DATA.categories[nav.cat][nav.gender][nav.age];
+  }
+  if(shape==='gender-only'){
+    if(!nav.gender) return null;
+    return DATA.categories[nav.cat][nav.gender];
+  }
+  return null;
+}
+
+/* ---------------- Storage (Firebase-backed, bridged from a module script below) ---------------- */
+function __mergeRemote(remote){
+  const fd = freshData();
+  const merged = (remote && typeof remote === 'object') ? remote : {};
+  if(!merged.categories) merged.categories = fd.categories;
+  else {
+    if(!merged.categories.stage) merged.categories.stage = fd.categories.stage;
+    else {
+      for(const g of ['boys','girls']){
+        if(!merged.categories.stage[g]) merged.categories.stage[g] = fd.categories.stage[g];
+        for(const ag of AGE_GROUPS){
+          if(!merged.categories.stage[g][ag.id]) merged.categories.stage[g][ag.id] = fd.categories.stage[g][ag.id];
+        }
+      }
+    }
+    if(!merged.categories.nonstage) merged.categories.nonstage = fd.categories.nonstage;
+    else {
+      for(const g of ['boys','girls']){
+        if(!merged.categories.nonstage[g]) merged.categories.nonstage[g] = fd.categories.nonstage[g];
+        for(const ag of AGE_GROUPS){
+          if(!merged.categories.nonstage[g][ag.id]) merged.categories.nonstage[g][ag.id] = fd.categories.nonstage[g][ag.id];
+        }
+      }
+    }
+    if(!merged.categories.general) merged.categories.general = fd.categories.general;
+    else {
+      if(!merged.categories.general.boys) merged.categories.general.boys = fd.categories.general.boys;
+      if(!merged.categories.general.girls) merged.categories.general.girls = fd.categories.general.girls;
+    }
+  }
+  if(!merged.teamAdjustments) merged.teamAdjustments = {jahoon:0, saihoon:0, saithoon:0};
+  merged.roster = fd.roster;
+  return merged;
+}
+window.__applyRemoteData = function(remote){
+  DATA = __mergeRemote(remote);
+  render();
+};
+async function saveData(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(async ()=>{
+    if(window.cloudSave){
+      try{
+        await window.cloudSave({categories: DATA.categories, teamAdjustments: DATA.teamAdjustments});
+        const t = document.getElementById('toast');
+        if(t){ t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 900); }
+      }catch(e){ console.error(e); }
+    }
+  }, 250);
+}
+
+/* ---------------- Score computation ---------------- */
+function forEachProgram(cb){
+  for(const g of ['boys','girls']){
+    for(const ag of AGE_GROUPS){
+      const list = DATA.categories.stage[g][ag.id] || [];
+      list.forEach(p=>cb(p, {catLabel:'STAGE', genderLabel:g==='boys'?'BOYS':'GIRLS', ageLabel:ag.label}));
+    }
+  }
+  for(const g of ['boys','girls']){
+    for(const ag of AGE_GROUPS){
+      const list = DATA.categories.nonstage[g][ag.id] || [];
+      list.forEach(p=>cb(p, {catLabel:'NON STAGE', genderLabel:g==='boys'?'BOYS':'GIRLS', ageLabel:ag.label}));
+    }
+  }
+  for(const g of ['boys','girls']){
+    const list = DATA.categories.general[g] || [];
+    list.forEach(p=>cb(p, {catLabel:'GENERAL', genderLabel:g==='boys'?'BOYS':'GIRLS', ageLabel:null}));
+  }
+}
+
+function computeTeamScores(){
+  const totals = {jahoon:0, saihoon:0, saithoon:0};
+  forEachProgram((p)=>{
+    for(const posKey of ['first','second','third']){
+      const r = p.results[posKey];
+      if(r && r.team && totals.hasOwnProperty(r.team)){
+        totals[r.team] += (typeof r.points === 'number' ? r.points : POINTS[posKey]);
+      }
+    }
+  });
+  const grand = {};
+  for(const id in totals){
+    grand[id] = totals[id] + (DATA.teamAdjustments[id] || 0);
+  }
+  return {computed:totals, grand};
+}
+
+function searchByChest(query){
+  const q = query.trim();
+  const out = {identity:null, placements:[]};
+  if(!q) return out;
+  const rosterEntry = DATA.roster[q];
+  if(rosterEntry){
+    out.identity = {
+      name: rosterEntry.name,
+      team: rosterEntry.team,
+      genderLabel: rosterEntry.gender==='boys'?'BOYS':'GIRLS',
+      ageLabel: AGE_GROUPS.find(a=>a.id===rosterEntry.ageGroup).label
+    };
+  }
+  const posLabel = {first:'1st', second:'2nd', third:'3rd'};
+  forEachProgram((p, meta)=>{
+    for(const posKey of ['first','second','third']){
+      const r = p.results[posKey];
+      if(r && r.chestNo && r.chestNo.trim() === q){
+        const path = meta.ageLabel
+          ? `${meta.catLabel} • ${meta.genderLabel} • ${meta.ageLabel} • ${p.name}`
+          : `${meta.catLabel} • ${meta.genderLabel} • ${p.name}`;
+        out.placements.push({path, name: r.name || (rosterEntry?rosterEntry.name:'(പേര് ചേർത്തിട്ടില്ല)'), pos: posLabel[posKey], posKey});
+      }
+    }
+  });
+  return out;
+}
+
+/* ---------------- Rendering ---------------- */
+function el(tag, attrs={}, children=[]){
+  const e = document.createElement(tag);
+  for(const k in attrs){
+    if(k === 'class') e.className = attrs[k];
+    else if(k === 'html') e.innerHTML = attrs[k];
+    else if(k.startsWith('on')) e.addEventListener(k.slice(2), attrs[k]);
+    else e.setAttribute(k, attrs[k]);
+  }
+  (Array.isArray(children)?children:[children]).forEach(c=>{
+    if(c===null||c===undefined) return;
+    if(typeof c === 'string') e.appendChild(document.createTextNode(c));
+    else e.appendChild(c);
+  });
+  return e;
+}
+
+function render(){
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+
+  if(!DATA){
+    app.appendChild(el('div',{class:'loading'},'ലോഡ് ചെയ്യുന്നു...'));
+    return;
+  }
+
+  const header = el('header',{class:'top'});
+  header.appendChild(el('div',{class:'eyebrow'},'M E E L A D   F E S T'));
+  header.appendChild(el('div',{class:'title-ml'},'ഈദേ റബീഅ്'));
+  header.appendChild(el('div',{class:'title-sub'},'MEELAD FEST 2026'));
+  app.appendChild(header);
+
+  const searchZone = el('div',{class:'search-zone'});
+  const searchBox = el('div',{class:'search-box'});
+  const searchInput = el('input',{
+    type:'text',
+    inputmode:'numeric',
+    placeholder:'type your chest no. .....',
+    value: searchQuery,
+    oninput: (e)=>{ searchQuery = e.target.value; renderSearchResultsOnly(); }
+  });
+  searchBox.appendChild(searchInput);
+  searchBox.appendChild(el('span',{class:'icon'},'🔍'));
+  searchZone.appendChild(searchBox);
+  const resultsHolder = el('div',{id:'searchResultsHolder'});
+  searchZone.appendChild(resultsHolder);
+  app.appendChild(searchZone);
+  renderSearchResultsInto(resultsHolder);
+
+  const scores = computeTeamScores();
+  const teamsWrap = el('div',{class:'teams'});
+  TEAMS.forEach(t=>{
+    teamsWrap.appendChild(el('div',{class:'team-bar '+t.cls},[
+      el('div',{class:'label'}, t.label),
+      el('div',{class:'score'}, String(scores.grand[t.id]))
+    ]));
+  });
+  app.appendChild(teamsWrap);
+
+  if(isAdmin){
+    const adminPanel = el('div',{class:'admin-panel'});
+    adminPanel.appendChild(el('div',{class:'ap-title'},'ഗ്രാൻഡ് ടോട്ടൽ ക്രമീകരണം (ബോണസ് / കിഴിവ്)'));
+    TEAMS.forEach(t=>{
+      const row = el('div',{class:'adj-row'});
+      row.appendChild(el('span',{class:'swatch', style:`background:${t.hex}`}));
+      row.appendChild(el('span',{class:'nm'}, t.label));
+      row.appendChild(el('span',{class:'computed'}, `(പ്രോഗ്രാം സ്കോർ: ${scores.computed[t.id]})`));
+      const adjInput = el('input',{type:'number', value: DATA.teamAdjustments[t.id] || 0});
+      adjInput.addEventListener('change', ()=>{
+        const v = parseInt(adjInput.value,10);
+        DATA.teamAdjustments[t.id] = isNaN(v)?0:v;
+        saveData();
+        render();
+      });
+      row.appendChild(adjInput);
+      adminPanel.appendChild(row);
+    });
+    app.appendChild(adminPanel);
+  }
+
+  const catWrap = el('div',{class:'cat-buttons'});
+  CATEGORIES.forEach(c=>{
+    catWrap.appendChild(el('button',{
+      class:'cat-btn'+(nav.cat===c.id?' active':''),
+      onclick:()=>{
+        if(nav.cat===c.id){ nav = {cat:null,gender:null,age:null,progIdx:null}; }
+        else { nav = {cat:c.id, gender:null, age:null, progIdx:null}; }
+        render();
+      }
+    }, c.label.split(' ')));
+  });
+  app.appendChild(catWrap);
+
+  if(nav.cat){
+    app.appendChild(renderCrumbs());
+    app.appendChild(renderPanel());
+  }
+
+  app.appendChild(el('div',{class:'foot-band'}));
+}
+
+function renderSearchResultsInto(holder){
+  holder.innerHTML='';
+  if(!searchQuery.trim()) return;
+  const result = searchByChest(searchQuery);
+  const box = el('div',{class:'search-results'});
+
+  if(result.identity){
+    const teamObj = TEAMS.find(t=>t.id===result.identity.team);
+    const idBlock = el('div',{class:'sr-identity'});
+    idBlock.appendChild(el('div',{class:'nm'}, `#${searchQuery} — ${result.identity.name}`));
+    idBlock.appendChild(el('div',{class:'meta'}, `${result.identity.genderLabel} • ${result.identity.ageLabel}`));
+    idBlock.appendChild(el('span',{class:'team-pill', style:`background:${teamObj.hex}`}, teamObj.label));
+    box.appendChild(idBlock);
+  }
+
+  box.appendChild(el('div',{class:'sr-head'}, `റിസൾട്ടുകൾ — ${result.placements.length}`));
+  if(result.placements.length===0){
+    box.appendChild(el('div',{class:'sr-empty'}, result.identity ? 'ഈ വിദ്യാർത്ഥിക്ക് ഇതുവരെ സമ്മാനം രേഖപ്പെടുത്തിയിട്ടില്ല.' : 'ഈ ചെസ്റ്റ് നമ്പർ കണ്ടെത്താനായില്ല.'));
+  } else {
+    result.placements.forEach(m=>{
+      box.appendChild(el('div',{class:'sr-item'},[
+        el('div',{class:'path'}, m.path),
+        el('span',{class:'name'}, m.name),
+        el('span',{class:'pos pos-'+({first:1,second:2,third:3}[m.posKey])}, m.pos)
+      ]));
+    });
+  }
+  holder.appendChild(box);
+}
+function renderSearchResultsOnly(){
+  const holder = document.getElementById('searchResultsHolder');
+  if(holder) renderSearchResultsInto(holder);
+}
+
+function renderCrumbs(){
+  const crumbs = el('div',{class:'crumbs'});
+  const catObj = CATEGORIES.find(c=>c.id===nav.cat);
+  const shape = catObj.shape;
+  crumbs.appendChild(el('button',{onclick:()=>{nav={cat:null,gender:null,age:null,progIdx:null};render();}}, 'ഹോം'));
+  crumbs.appendChild(el('span',{class:'sep'},'›'));
+
+  const steps = [];
+  if(shape==='gender-age'){
+    if(nav.gender===null){ steps.push({label:catObj.label, current:true}); }
+    else{
+      steps.push({label:catObj.label, onClick:()=>{nav.gender=null;nav.age=null;nav.progIdx=null;render();}});
+      if(nav.age===null){ steps.push({label:nav.gender==='boys'?'BOYS':'GIRLS', current:true}); }
+      else{
+        steps.push({label:nav.gender==='boys'?'BOYS':'GIRLS', onClick:()=>{nav.age=null;nav.progIdx=null;render();}});
+        const ageObj = AGE_GROUPS.find(a=>a.id===nav.age);
+        if(nav.progIdx===null){ steps.push({label:ageObj.label, current:true}); }
+        else{
+          steps.push({label:ageObj.label, onClick:()=>{nav.progIdx=null;render();}});
+          const prog = getProgList()[nav.progIdx];
+          steps.push({label:prog?prog.name:'', current:true});
+        }
+      }
+    }
+  } else if(shape==='gender-only'){
+    if(nav.gender===null){ steps.push({label:catObj.label, current:true}); }
+    else{
+      steps.push({label:catObj.label, onClick:()=>{nav.gender=null;nav.progIdx=null;render();}});
+      if(nav.progIdx===null){ steps.push({label:nav.gender==='boys'?'BOYS':'GIRLS', current:true}); }
+      else{
+        steps.push({label:nav.gender==='boys'?'BOYS':'GIRLS', onClick:()=>{nav.progIdx=null;render();}});
+        const prog = getProgList()[nav.progIdx];
+        steps.push({label:prog?prog.name:'', current:true});
+      }
+    }
+  }
+
+  steps.forEach((s, i)=>{
+    if(i>0) crumbs.appendChild(el('span',{class:'sep'},'›'));
+    if(s.current) crumbs.appendChild(el('span',{class:'current'}, s.label));
+    else crumbs.appendChild(el('button',{onclick:s.onClick}, s.label));
+  });
+
+  return crumbs;
+}
+
+function renderGenderChips(onPick){
+  return el('div',{class:'chip-row'}, [
+    el('button',{class:'chip', onclick:()=>onPick('boys')}, 'BOYS'),
+    el('button',{class:'chip', onclick:()=>onPick('girls')}, 'GIRLS')
+  ]);
+}
+
+function renderAgeChips(onPick){
+  const grid = el('div',{class:'agegroup-grid'});
+  AGE_GROUPS.forEach(ag=>{
+    grid.appendChild(el('button',{class:'chip', onclick:()=>onPick(ag.id)}, ag.label));
+  });
+  return grid;
+}
+
+function renderProgramListPanel(){
+  const progs = getProgList();
+  const panel = el('div',{});
+  const list = el('div',{class:'prog-list'});
+  if(!progs || progs.length===0){
+    list.appendChild(el('div',{class:'empty-note'}, 'ഈ വിഭാഗത്തിൽ ഇതുവരെ പ്രോഗ്രാമുകൾ ചേർത്തിട്ടില്ല.'));
+  }
+  (progs||[]).forEach((p, idx)=>{
+    const filled = ['first','second','third'].filter(k=>p.results[k] && p.results[k].name).length;
+    list.appendChild(el('div',{class:'prog-item', onclick:()=>{nav.progIdx=idx;render();}}, [
+      el('div',{},[
+        el('div',{class:'pname'}, p.name),
+        el('div',{class:'pstatus'}, filled===0?'റിസൾട്ട് ചേർത്തിട്ടില്ല':`${filled}/3 റിസൾട്ട് ചേർത്തു`)
+      ]),
+      el('div',{class:'arrow'}, '›')
+    ]));
+  });
+  panel.appendChild(list);
+
+  if(isAdmin){
+    const addRow = el('div',{class:'add-row'});
+    const nameInput = el('input',{placeholder:'പുതിയ പ്രോഗ്രാം പേര്...'});
+    addRow.appendChild(nameInput);
+    addRow.appendChild(el('button',{onclick:()=>{
+      const v = nameInput.value.trim();
+      if(!v) return;
+      getProgList().push({name:v.toUpperCase(), results:{first:null,second:null,third:null}});
+      saveData();
+      render();
+    }}, '+ ചേർക്കുക'));
+    panel.appendChild(addRow);
+  }
+  return panel;
+}
+
+function renderPlacementPanel(){
+  const progs = getProgList();
+  const prog = progs[nav.progIdx];
+  const panel = el('div',{});
+  const ranks = [
+    {key:'first', label:'1st', color:'#c9982f'},
+    {key:'second', label:'2nd', color:'#8d8d8d'},
+    {key:'third', label:'3rd', color:'#a2622f'}
+  ];
+  ranks.forEach(rank=>{
+    const current = prog.results[rank.key] || {chestNo:'', name:'', team:'', points: POINTS[rank.key]};
+    const card = el('div',{class:'placement-card'});
+    card.appendChild(el('h4',{},[
+      el('span',{class:'rank-badge', style:`background:${rank.color}`}, rank.label),
+      rank.label + ' സ്ഥാനം'
+    ]));
+
+    if(!isAdmin){
+      if(current.chestNo || current.name){
+        const teamObj = TEAMS.find(t=>t.id===current.team);
+        card.appendChild(el('div',{class:'readonly-line'}, `#${current.chestNo || '—'} ${current.name || ''}${teamObj?' — '+teamObj.label:''}`));
+      } else {
+        card.appendChild(el('div',{class:'readonly-empty'}, 'ഇതുവരെ ചേർത്തിട്ടില്ല'));
+      }
+      panel.appendChild(card);
+      return;
+    }
+
+    const row1 = el('div',{class:'field-row'});
+    const chestInput = el('input',{type:'text', inputmode:'numeric', placeholder:'ചെസ്റ്റ് നമ്പർ', value: current.chestNo || ''});
+    const nameInput = el('input',{type:'text', placeholder:'വിദ്യാർത്ഥിയുടെ പേര്', value: current.name || ''});
+    row1.appendChild(chestInput);
+    row1.appendChild(nameInput);
+    card.appendChild(row1);
+
+    // auto-fill name/team from roster when a known chest number is typed
+    chestInput.addEventListener('input', ()=>{
+      const entry = DATA.roster[chestInput.value.trim()];
+      if(entry && !nameInput.value.trim()){
+        nameInput.value = entry.name;
+      }
+      if(entry){
+        teamSelect.value = entry.team;
+      }
+    });
+
+    const row2 = el('div',{class:'field-row'});
+    const teamSelect = el('select',{});
+    teamSelect.appendChild(el('option',{value:''}, 'ടീം തിരഞ്ഞെടുക്കുക'));
+    TEAMS.forEach(t=>{
+      const opt = el('option',{value:t.id}, t.label);
+      if(current.team===t.id) opt.setAttribute('selected','selected');
+      teamSelect.appendChild(opt);
+    });
+    const ptsInput = el('input',{class:'pts', type:'number', value: (typeof current.points==='number'?current.points:POINTS[rank.key])});
+    row2.appendChild(teamSelect);
+    row2.appendChild(ptsInput);
+    card.appendChild(row2);
+
+    function commit(){
+      const chestNo = chestInput.value.trim();
+      const name = nameInput.value.trim();
+      const team = teamSelect.value;
+      const points = parseInt(ptsInput.value,10);
+      if(!chestNo && !name && !team){
+        prog.results[rank.key] = null;
+      } else {
+        prog.results[rank.key] = {chestNo, name, team, points: isNaN(points)?POINTS[rank.key]:points};
+      }
+      saveData();
+    }
+    chestInput.addEventListener('change', commit);
+    nameInput.addEventListener('change', commit);
+    teamSelect.addEventListener('change', commit);
+    ptsInput.addEventListener('change', commit);
+
+    panel.appendChild(card);
+  });
+
+  if(isAdmin){
+    panel.appendChild(el('button',{class:'primary-btn', style:'width:100%;margin-top:4px;', onclick:()=>{ render(); }}, 'അപ്ഡേറ്റ് ചെയ്തു ✓ ലിസ്റ്റിലേക്ക് മടങ്ങുക'));
+  }
+  return panel;
+}
+
+function renderPanel(){
+  const panel = el('div',{class:'panel'});
+  const shape = catShape(nav.cat);
+
+  if(shape==='gender-age'){
+    if(nav.gender===null){ panel.appendChild(renderGenderChips((g)=>{nav.gender=g;render();})); return panel; }
+    if(nav.age===null){ panel.appendChild(renderAgeChips((a)=>{nav.age=a;render();})); return panel; }
+    if(nav.progIdx===null){ panel.appendChild(renderProgramListPanel()); return panel; }
+    panel.appendChild(renderPlacementPanel());
+    return panel;
+  }
+
+  if(shape==='gender-only'){
+    if(nav.gender===null){ panel.appendChild(renderGenderChips((g)=>{nav.gender=g;render();})); return panel; }
+    if(nav.progIdx===null){ panel.appendChild(renderProgramListPanel()); return panel; }
+    panel.appendChild(renderPlacementPanel());
+    return panel;
+  }
+
+  return panel;
+}
+
+</script>
+<script src="./firebase-config.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+function showLiveStatus(msg, isErr){
+  let line = document.getElementById('liveStatusLine');
+  if(!line){
+    line = document.createElement('div');
+    line.id = 'liveStatusLine';
+    line.style.cssText = 'font-size:11px;padding:2px 18px 8px;color:#0a5a4d;';
+    const zone = document.querySelector('.search-zone');
+    if(zone) zone.parentNode.insertBefore(line, zone.nextSibling);
+  }
+  line.textContent = msg;
+  line.style.color = isErr ? '#a33333' : '#0a5a4d';
+}
+
+const cfg = window.FIREBASE_CONFIG || {};
+const configured = cfg && cfg.apiKey && !String(cfg.apiKey).includes("PASTE_");
+
+if(!configured){
+  window.__applyRemoteData(null);
+  showLiveStatus('Offline mode — Firebase not configured', true);
+} else {
+  try{
+    const app = initializeApp(cfg);
+    const db = getFirestore(app);
+    const stateRef = doc(db, "meelad", "state");
+    onSnapshot(stateRef, (snap)=>{
+      window.__applyRemoteData(snap.exists() ? snap.data() : null);
+      showLiveStatus('Live · connected');
+    }, (err)=>{
+      console.error(err);
+      window.__applyRemoteData(null);
+      showLiveStatus('Connection error — offline data shown: ' + (err && err.message || err), true);
+    });
+    window.cloudSave = async (payload)=>{ await setDoc(stateRef, payload); };
+  }catch(err){
+    console.error(err);
+    window.__applyRemoteData(null);
+    showLiveStatus('Firebase init failed — offline data shown: ' + (err && err.message || err), true);
+  }
+}
+</script>
+</body>
+</html>
+
